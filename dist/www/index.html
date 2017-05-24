@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!--
+			<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+		-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+		<title>Mobile Sensors</title>
+		<link rel="stylesheet" href="css/style.css">
+		<style>
+			line {stroke:#ddd;shape-rendering: crispEdges;}
+			text {text-anchor:middle;}
+			.axis line {fill:none;stroke:#ddd;shape-rendering: crispEdges;}
+			.axis path  {fill:none;}
+			.axis text {font-size:0.7em;fill:#555;font-family:sans-serif}
+		</style>
+		<script>
+			if (typeof Array.from === "undefined") {
+				Array.from = function(arr) {
+					return Array.prototype.slice.call(arr);
+				}
+			}
+			(function() {
+		    var lastTime = 0;
+		    var vendors = ['webkit', 'moz'];
+		    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+		        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+		        window.cancelAnimationFrame =
+		          window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+		    }
+
+		    if (!window.requestAnimationFrame)
+		        window.requestAnimationFrame = function(callback, element) {
+		            var currTime = new Date().getTime();
+		            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+		            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+		              timeToCall);
+		            lastTime = currTime + timeToCall;
+		            return id;
+		        };
+
+		    if (!window.cancelAnimationFrame)
+		        window.cancelAnimationFrame = function(id) {
+		            clearTimeout(id);
+		        };
+		}());
+		</script>
+	</head>
+	<body>
+    <div class="app">
+        <h1>Mobile Sensors</h1>
+				<!--
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+			-->
+			<svg width=800 height=600></svg>
+    </div>
+    <script src="cordova.js"></script>
+		<script src="assets/lib/d3.v3.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>

@@ -13,7 +13,9 @@
     "watch:js": "watchify -p browserify-hmr src/js/index.js -o dist/www/js/app.js --debug",
     "watch:sass": "npm run build:sass -- --watch src/sass/**/*",
     "livereload": "livereload dist/www/**/*.css -d",
-    "start": "npm run build && serve --path dist/www & npm run watch"
+    "start": "npm run build && serve --path dist/www & npm run watch",
+		"start:cordova": "npm run build:legacy && cd dist && cordova run android && cd ..",
+		"setup:cordova": "cd dist && cordova platform add android && cd .."
   },
   "author": "",
   "license": "ISC",

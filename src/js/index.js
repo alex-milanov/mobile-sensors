@@ -47,11 +47,14 @@ const state$ = actions$
 const ui$ = state$.map(state => ui({state, actions}));
 vdom.patchStream(ui$, '.app');
 
+// sensors
+// accelerometer
 document.addEventListener("deviceready", () => {
-	if (navigator.accelerometer)
+	if (navigator.accelerometer) {
 		navigator.accelerometer.watchAcceleration(
 			accel => actions.set('accel', accel),
 			err => console.log({err}),
 			{frequency: 300}
 		);
+	}
 }, false);

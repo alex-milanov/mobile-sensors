@@ -2339,7 +2339,8 @@ html {
 body {
   margin: 0px;
   padding: 0px;
-  font-family: "Open Sans"; }
+  font-family: "Open Sans";
+  background: #eee; }
 
 .app h1 {
   font-family: Electrolize; }

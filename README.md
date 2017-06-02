@@ -4,6 +4,7 @@
 Node.js
 - either set it up from https://nodejs.org/en/
 - or via version manager like `nvm` https://github.com/creationix/nvm
+
 Android Dev Environment
 - scroll down for linux setup
 
@@ -18,7 +19,11 @@ npm install
 ```
 - add android platform
 ```sh
+# short version
 npm run setup:cordova
+
+# or more precisely
+cd dist && cordova platform add android && cd ..
 ```
 - also the dist directory is basically a cordova project right now, so you can add other platforms, install plusins etc...
 
@@ -29,8 +34,13 @@ npm start
 ```
 - Setup Android Platform
 ```
-npm run setup:cordova
+# short version
+npm run start:cordova
+
+# or more precisely
+npm run build:legacy && cd dist && cordova run android && cd ..
 ```
+- Also check `package.json` for more tasks
 
 ## Android Dev Environment (taken from my wiki)
 
@@ -73,9 +83,4 @@ sudo ~/Downloads/genymotion-*.bin
 You might need to add the following line to `~/.bashrc` or `~/.zshrc`
 ```sh
 export ANDROID_HOME="~/Android/Sdk/"
-```
-Also if using react-native you might want to change the build tool version at
-`./android/app/build.gradle:83` or install the previous version as well
-```js
-buildToolsVersion "23.0.3"
 ```

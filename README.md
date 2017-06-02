@@ -32,7 +32,7 @@ cd dist && cordova platform add android && cd ..
 ```sh
 npm start
 ```
-- Setup Android Platform
+- Start/Deploy the mobile app. Depending on if you have Genymotion running with an emulator or have connected your android device
 ```
 # short version
 npm run start:cordova
